@@ -1,0 +1,1 @@
+sets = ['Brilliant Stars', 'Vivid Voltage', 'Celebrations' 'Astral Radiance', 'Lost Origin', 'Silver Tempest', 'Crown Zenith', 'Scarlet & Violet', 'Paldea Evolved', 'Obsidian Flames', 'Scarlet & Violet' 'Paradox Rift']
