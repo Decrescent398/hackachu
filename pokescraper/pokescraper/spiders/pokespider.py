@@ -18,7 +18,7 @@ class PokeSpider(scrapy.Spider):
                     for pokeset in sets]
 
     def parse(self, response):
-        setname = response.css('div.card-body h1.card-title::text').get().split('Pull')[0]
+        setname = response.css('div.card-body h1.card-title::text').get().split('Pull')[0].strip()
         
         table = response.css('div.table-responsive')
         
