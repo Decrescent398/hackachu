@@ -31,7 +31,7 @@ class PokeSpider(scrapy.Spider):
             values = {
                 "set": setname,
                 "rarity": rarity,
-                "pull_rate": pull_rate
+                "pull_rate": pull_rate[:-1]
             }
             with open('../pull_rates.json', 'a') as f:
                 f.write(json.dumps(values) + '\n')
