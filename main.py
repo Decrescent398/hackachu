@@ -14,6 +14,8 @@ scraped['rarity'] = scraped['rarity'].replace({
     'Rare Radiant': 'Radiant Rare',
     'Double Rare Holo': 'Double Rare'}) 
 
+scraped['pullRate'] /= 100
+
 card_rarity_count = cards.groupby(['set', 'rarity']).size().rename('n').reset_index()
 
 card_rarity_count['total'] = card_rarity_count.groupby('set')['n'].transform('sum')
