@@ -8,32 +8,24 @@ scraped = pd.read_json('pull_rates.json', lines=True)
 cards = cards[cards['set'].isin(sets)]
 cards['rarity'] = cards['rarity'].replace('Ultra Rare', 'Rare Ultra')
 
-scraped['rarity'] = scraped['rarity'].replace('Secret Rare Holo', 'Rare Secret')
-scraped['rarity'] = scraped['rarity'].replace('Ultra Rare', 'Rare Ultra') 
-scraped['rarity'] = scraped['rarity'].replace('Rare Radiant', 'Radiant Rare') 
-scraped['rarity'] = scraped['rarity'].replace('Double Rare Holo', 'Double Rare') 
+scraped['rarity'] = scraped['rarity'].replace({
+    'Secret Rare Holo': 'Rare Secret',
+    'Ultra Rare': 'Rare Ultra',
+    'Rare Radiant': 'Radiant Rare',
+    'Double Rare Holo': 'Double Rare'}) 
 
-for setnum in range(len(sets)):
-    
-    scraped_card_types = dfg.loc[dfg['set'] == sets[setnum], ['rarity']]
-    scraped_rarities = sorted(set(scraped_card_types['rarity']))
-    
-    card_types = cards.loc[cards['set'] == sets[setnum], ['rarity']]
-    all_types = scraped_rarities + sorted(set(card_types['rarity']))
-    
-    for ctype in all_types:
-        if ctype not in scraped_rarities:
-            dfg.loc[len(dfg)] = [sets[setnum], ctype, (len(card_types.loc[card_types['rarity'] == ctype]) / len(card_types))]
+card_rarity_count = cards.groupby(['set', 'rarity']).size().rename('n').reset_index()
+
+card_rarity_count['total'] = card_rarity_count.groupby('set')['n'].transform('sum')
+card_rarity_count['pullRate'] = card_rarity_count['n'] / card_rarity_count['total']
+
+present = scraped.set_index(['set', 'rarity']).index
+missing = card_rarity_count[~card_rarity_count.set_index(['set', 'rarity']).index.isin(present)][['set', 'rarity', 'pullRate']]
+
+scraped = pd.concat([scraped, missing], ignore_index=True)
             
 x = pd.merge(cards, scraped, on=['set','rarity'], how='inner')
 
-for setnum in range(len(sets)):
-    
-    all_rarities = sorted(set(cards.loc[cards['set'] == sets[setnum], ['rarity']]['rarity']))
-    
-    for rarity in all_rarities:
-        
-        total_cards_of_rarity = len(x.loc[(x['set'] == sets[setnum]) & (x['rarity'] == rarity), 'rarity'])
-        pull_rate = dfg.loc[(dfg['set'] == sets[setnum]) & (dfg['rarity'] == rarity), 'pullRate']
-        
-        x.loc[(x['set'] == sets[setnum]) & (x['rarity'] == rarity), 'pullRate'] = (1/total_cards_of_rarity) * pull_rate.item()
+x['groupPullRate'] = x.groupby(['set', 'rarity'])['pullRate'].transform('first')
+x['countInGroup'] = x.groupby(['set', 'rarity'])['rarity'].transform('count')
+x['pullRate'] = x['groupPullRate'] / x['countInGroup']
