@@ -1,37 +1,16 @@
 import scrapy
-import numpy
-import json
+from colorama import Fore, Style
 
-# from setup import sets
-
-green = '\033[32m'
-reset = '\033[0m'
+colprint = lambda col, text: print(col + str(text) + Style.RESET_ALL)
+root = "https://www.thepricedex.com/sets"
 
 class PokeSpider(scrapy.Spider):
     
-    name = 'poke'
-    sets = ['Brilliant Stars', 'Lost Origin', 'Silver Tempest', 
-                'Crown Zenith', 'Paldea Evolved', 'Obsidian Flames']
-    start_urls = ['https://www.digitaltq.com/' 
-                    + pokeset.replace(' ', '-') 
-                    + '-pull-rates-pokemon-tcg' 
-                    for pokeset in sets]
+    name = "poke"
+    start_urls = [root]
 
     def parse(self, response):
-        setname = response.css('div.card-body h1.card-title::text').get().split('Pull')[0].strip()
-        
-        table = response.css('div.table-responsive')
-        
-        data = numpy.array(table.css('td::text').getall())
-        data = data.reshape(int(len(data) / 3), 3)
-        data = numpy.delete(data, 1, axis=1)
-        
-        for row in data:
-            rarity, pull_rate = row
-            values = {
-                "set": setname,
-                "rarity": rarity,
-                "pullRate": pull_rate[:-1]
-            }
-            with open('../pull_rates.json', 'a') as f:
-                f.write(json.dumps(values) + '\n')
+        data = response.css("div.MuiBox-root.css-0")
+        sets = data.css("div.MuiBox-root.css-14880k0::attr(id)").getall()
+        setdirs = data.css("a::attr(href)").getall()
+        print(setdirs)
