@@ -28,27 +28,27 @@ class PokeSpider(scrapy.Spider):
             "Card Rarities": {
                 tier: {
                     "Count": tier_count,
-                    "Rarities": {k: {"Count": v} for k,v in 
+                    "Rarities": {k: {"Count": int(v)} for k,v in 
                                 list(i.split(": ") for i in 
                                      rarities.css("span.MuiChip-label::text").getall())
                             }
                     }
                 for tier, tier_count, rarities in
                 zip(
-                    list(i for i in
+                    list(i.replace("(", "").replace(")", "").strip() for i in
                         response.css("div.MuiBox-root.css-1rr4qq7 span::text").getall() 
                         if "Cards" in i),
-                    list(int(i) for i in 
+                    list(int(i.replace("(", "").replace(")", "").strip()) for i in 
                         response.css("div.MuiBox-root.css-1rr4qq7 span::text").getall() 
-                        if i.isdigit()),
+                        if i.strip().replace("(", "").replace(")", "").isdigit()),
                     response.css("div.MuiStack-root.css-1q13opc"),
                     )
                 },
             "Cards": {}
             }
-        yield response.follow(response.url+"/pull-rates", callback=self.parse_pullrates, cb_kwargs={"data": data}) # cb_kwargs is passed into callback as a keyword argument
+        yield response.follow(response.url+"/pull-rates", callback=self.parse_pullrates, cb_kwargs={"details": details}) # cb_kwargs is passed into callback as a keyword argument
         
-    def parse_pullrates(self, response, data):
+    def parse_pullrates(self, response, details):
         
         tables = response.css("div.MuiTableContainer-root")
         pull_rates_table = tables[0]
@@ -58,7 +58,7 @@ class PokeSpider(scrapy.Spider):
         pull_rates_values = np.array(pull_rates_table.css("p::text").getall())
         
         cards_in_pack = float(pull_rates_values[-2].split()[0])
-        packs_in_booster = float(pull_rates_values[-1].split()[0])
+        cards_in_booster = float(pull_rates_values[-1].split()[0])
         
         idx = np.where(pull_rates_values == "Total")[0][0]
         pull_rates_values = pull_rates_values[:idx]
@@ -80,8 +80,9 @@ class PokeSpider(scrapy.Spider):
         rates = vfunc(pull_rates_values[:, [1, 2, 3]])
         pull_rates_values[:, [1, 2, 3]] = rates
         
-        # (n/4, 4) -> (n/4, 5)
-        pull_rates_values = np.c_[pull_rates_values, pull_rates_values[:, 1].astype(float) * float(cards_in_pack)]
+        # (n/4, 4) -> (n/4, 3)
+        pull_rates_values = np.delete(pull_rates_values, 0, axis=1)
+        pull_rates_values = pull_rates_values.astype(float)
         
         # (n)
         expected_values = np.array([i.replace("$", "").replace("—", "0") for i in expected_value_table.css("p::text").getall()])
@@ -96,3 +97,33 @@ class PokeSpider(scrapy.Spider):
         expected_values = np.reshape(expected_values, (int(len(expected_values)/5), 5))
         # (n/5, 5) -> (n/4, 4)
         expected_values = np.delete(expected_values, 1, axis=1)
+        
+        # (n/4, 4) -> (n/4, 3)
+        expected_values = np.delete(expected_values, 0, axis=1)
+        expected_values = expected_values.astype(float)
+        
+        details["Cards in Pack"] = cards_in_pack
+        details["Cards in Booster"] = cards_in_booster
+        details["Total Priced"] = total_priced
+        details["Expected Value Per Pack"] = expected_value_per_pack
+        
+        pull_rates = np.concatenate((pull_rates_values, expected_values), axis=1)
+        
+        start = 0
+        for tier_key, tier_value in details["Card Rarities"].items():
+            stop = start + len(tier_value["Rarities"].keys())
+            pull_rates_clip = pull_rates[start: stop]
+            start = stop
+            
+            for rarity, rarity_pull_rate_details in zip(
+                tier_value["Rarities"].keys(), pull_rates_clip,
+            ):
+                details["Card Rarities"][tier_key]["Rarities"][rarity].update(dict(zip(
+                    (
+                        "Pull Rate", "Cards Per Booster Box", "Specific Card Odds",
+                        "Priced", "Average Value", "Expected Value Per Pack",
+                     ),
+                    rarity_pull_rate_details.tolist(),
+                )))
+        
+        print(details)
