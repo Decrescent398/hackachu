@@ -1,16 +1,19 @@
 {
     "logo": "https://images.scrydex.com/pokemon/me5-logo/logo",
     "name": "Pitch Black",
+    "Set Value": 542.56,
+    "Cards in Set": 120.0,
+    "Variants in Set": 199.0,
     "Release Date": "2026/07/17",
     "No. of Cards": "120",
     "Set Code": "PBL",
     "Set Group": "Mega Evolution",
     "Card Rarities": {
         "Ultra Rare Cards": {
-            "Count": 46,
+            "Count": 46.0,
             "Rarities": {
                 "Mega Hyper Rare": {
-                    "Count": 1,
+                    "Count": 1.0,
                     "Pull Rate": 0.001,
                     "Cards Per Booster Box": 0.0,
                     "Specific Card Odds": 0.001,
@@ -19,7 +22,7 @@
                     "Expected Value Per Pack": 0.12
                 },
                 "Special Illustration Rare": {
-                    "Count": 6,
+                    "Count": 6.0,
                     "Pull Rate": 0.010309278350515464,
                     "Cards Per Booster Box": 0.4,
                     "Specific Card Odds": 0.001718213058419244,
@@ -28,7 +31,7 @@
                     "Expected Value Per Pack": 0.52
                 },
                 "Ultra Rare": {
-                    "Count": 18,
+                    "Count": 18.0,
                     "Pull Rate": 0.07692307692307693,
                     "Cards Per Booster Box": 2.8,
                     "Specific Card Odds": 0.004273504273504274,
@@ -37,7 +40,7 @@
                     "Expected Value Per Pack": 0.26
                 },
                 "Illustration Rare": {
-                    "Count": 11,
+                    "Count": 11.0,
                     "Pull Rate": 0.1111111111111111,
                     "Cards Per Booster Box": 4.0,
                     "Specific Card Odds": 0.010101010101010102,
@@ -46,7 +49,7 @@
                     "Expected Value Per Pack": 0.25
                 },
                 "Double Rare": {
-                    "Count": 10,
+                    "Count": 10.0,
                     "Pull Rate": 0.2,
                     "Cards Per Booster Box": 7.2,
                     "Specific Card Odds": 0.02,
@@ -57,10 +60,10 @@
             }
         },
         "Standard Cards": {
-            "Count": 74,
+            "Count": 74.0,
             "Rarities": {
                 "Rare": {
-                    "Count": 11,
+                    "Count": 11.0,
                     "Pull Rate": 0.7142857142857143,
                     "Cards Per Booster Box": 26.0,
                     "Specific Card Odds": 0.06578947368421052,
@@ -69,7 +72,7 @@
                     "Expected Value Per Pack": 1.06
                 },
                 "Uncommon": {
-                    "Count": 26,
+                    "Count": 26.0,
                     "Pull Rate": 3.0,
                     "Cards Per Booster Box": 108.0,
                     "Specific Card Odds": 0.1149425287356322,
@@ -78,7 +81,7 @@
                     "Expected Value Per Pack": 0.41
                 },
                 "Common": {
-                    "Count": 37,
+                    "Count": 37.0,
                     "Pull Rate": 4.0,
                     "Cards Per Booster Box": 144.0,
                     "Specific Card Odds": 0.1075268817204301,
@@ -89,10 +92,10 @@
             }
         },
         "Reverse Cards": {
-            "Count": 74,
+            "Count": 74.0,
             "Rarities": {
                 "Rare": {
-                    "Count": 11,
+                    "Count": 11.0,
                     "Pull Rate": 1.0,
                     "Cards Per Booster Box": 36.0,
                     "Specific Card Odds": 0.125,
@@ -101,7 +104,7 @@
                     "Expected Value Per Pack": 0.0
                 },
                 "Uncommon": {
-                    "Count": 26,
+                    "Count": 26.0,
                     "Pull Rate": 0.2777777777777778,
                     "Cards Per Booster Box": 10.0,
                     "Specific Card Odds": 0.025380710659898477,
@@ -110,7 +113,7 @@
                     "Expected Value Per Pack": 0.08
                 },
                 "Common": {
-                    "Count": 37,
+                    "Count": 37.0,
                     "Pull Rate": 0.6666666666666666,
                     "Cards Per Booster Box": 23.7,
                     "Specific Card Odds": 0.025380710659898477,
@@ -125,5 +128,10 @@
     "Cards in Pack": 11.0,
     "Cards in Booster": 396.0,
     "Total Priced": 194.0,
-    "Expected Value Per Pack": 3.75
+    "Expected Value Per Pack": 3.75,
+    "Booster Pack EV": 3.75,
+    "Booster Box EV": 135.09,
+    "Packs Per Booster Box": 36.0,
+    "Cards Per Booster Pack": 11.0,
+    "Pull Rates Source": "https://x.com/switchstock/status/2079310377784103362"
 }

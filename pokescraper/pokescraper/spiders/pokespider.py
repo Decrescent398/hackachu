@@ -20,31 +20,38 @@ class PokeSpider(scrapy.Spider):
         details = {
             "logo": response.css("div.MuiBox-root.css-1kbd6lt img::attr(src)").get(),
             "name": response.css("div.MuiBox-root.css-0 h1::text").get(),
+            "Set Value": float(str(response.css("h5.MuiTypography-h5::text").get()).replace("$", "")),
+            "Cards in Set": list(float(i) for i in 
+                             "".join(response.css("div.MuiBox-root.css-i8nfdw span::text").getall()).split()
+                             if i.isdigit())[0],
+            "Variants in Set": list(float(i) for i in 
+                             "".join(response.css("div.MuiBox-root.css-i8nfdw span::text").getall()).split()
+                             if i.isdigit())[1],
             **dict(zip(
                     ("Release Date", "No. of Cards", "Set Code", "Set Group"), 
                     list(i.split(": ")[-1].split(" Cards")[0] for i in 
                          response.css("div.MuiStack-root.css-1xrn837 span::text").getall()),
-                )),
+            )),
             "Card Rarities": {
                 tier: {
                     "Count": tier_count,
-                    "Rarities": {k: {"Count": int(v)} for k,v in 
+                    "Rarities": {k: {"Count": float(v)} for k,v in 
                                 list(i.split(": ") for i in 
                                      rarities.css("span.MuiChip-label::text").getall())
-                            }
+                                },
                     }
                 for tier, tier_count, rarities in
                 zip(
                     list(i.replace("(", "").replace(")", "").strip() for i in
                         response.css("div.MuiBox-root.css-1rr4qq7 span::text").getall() 
                         if "Cards" in i),
-                    list(int(i.replace("(", "").replace(")", "").strip()) for i in 
+                    list(float(i.replace("(", "").replace(")", "").strip()) for i in 
                         response.css("div.MuiBox-root.css-1rr4qq7 span::text").getall() 
                         if i.strip().replace("(", "").replace(")", "").isdigit()),
                     response.css("div.MuiStack-root.css-1q13opc"),
                     )
                 },
-            "Cards": {}
+            "Cards": {},
             }
         yield response.follow(response.url+"/pull-rates", callback=self.parse_pullrates, cb_kwargs={"details": details}) # cb_kwargs is passed into callback as a keyword argument
         
@@ -125,5 +132,13 @@ class PokeSpider(scrapy.Spider):
                      ),
                     rarity_pull_rate_details.tolist(),
                 )))
+                
+        details.update(dict(zip(
+            response.css("div.MuiBox-root.css-1ijt0xn p::text").getall(),
+            list(float(i.replace("$", "")) for i in 
+                response.css("div.MuiBox-root.css-1ijt0xn h5::text").getall()),
+            ),),
+        )
+        details["Pull Rates Source"] = response.css("div.MuiBox-root.css-4sywta a::attr(href)").get()
         
         print(details)
