@@ -51,7 +51,35 @@ class PokeSpider(scrapy.Spider):
                     response.css("div.MuiStack-root.css-1q13opc"),
                     )
                 },
-            "Cards": {},
+            "Cards": {
+                num: {
+                    "Name": name,
+                    "Rarity": rarity,
+                    "image": image,
+                    "price": {cardtype: cardprice for cardtype, cardprice in
+                              zip(
+                                  list(i.strip() for i in 
+                                       price.css("p.css-ggah30 b::text").getall()
+                                       if i != ":"),
+                                  list(float(i.replace("$", "").strip()) for i in 
+                                       price.css("p.css-ggah30::text").getall()
+                                       if "$" in i),
+                            )
+                        },
+                } 
+                for num, name, rarity, image, price in
+                zip(
+                    list(i for i in 
+                         response.css("p.css-10ao1mw::text").getall()
+                         if i.isdigit()),
+                    response.css("h6.css-1xoqslx::text").getall(),
+                    response.css("span.css-b9zgoq::text").getall(),
+                    list(f"https://images.scrydex.com/pokemon/{response.url.split("/")[-2]}-{i}/large" for i in 
+                         response.css("p.css-10ao1mw::text").getall()
+                         if i.isdigit()),
+                    response.css("div.css-8eauar"),
+                )
+            },
             }
         yield response.follow(response.url+"/pull-rates", callback=self.parse_pullrates, cb_kwargs={"details": details}) # cb_kwargs is passed into callback as a keyword argument
         
