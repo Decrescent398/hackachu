@@ -4,6 +4,52 @@ import numpy as np
 
 root = "https://www.thepricedex.com"
 
+special_sets = {
+    
+    "unlimited": [ # 2 pull rate tabs (regular, unlimited)
+        "neo-destiny",
+        "neo-revelation",
+        "neo-discovery",
+        "neo-genesis",
+        "gym-challenge",
+        "gym-heroes",
+        "team-rocket",
+        "fossil",
+        "jungle",
+        ],
+
+    "shadowless": [ # 3 pull rate tabs (regular, unlimited, shadowless)
+        "base-set",
+        ],
+
+    "nobooster": [ # No Booster Box tab
+        "30th-celebration",
+        "ascended-heroes",
+        "black-bolt",
+        "white-flare",
+        "prismatic-evolutions",
+        "shrouded-fable",
+        "paldean-fates",
+        "151",
+        "crown-zenith",
+        "pokemon-go",
+        "celebrations",
+        "shining-fates",
+        "champions-path",
+        "hidden-fates",
+        "detective-pikachu",
+        "dragon-majesty",
+        "shining-legends",
+        "generations",
+        "double-crisis",
+        "dragon-vault",
+        ],
+}
+
+for k, v in special_sets.items():
+    v = list(root+"/sets/"+i for i in v)
+    special_sets[k] = v
+
 class PokeSpider(scrapy.Spider):
     
     name = "poke"
@@ -13,14 +59,13 @@ class PokeSpider(scrapy.Spider):
         setdirs = response.css("div.MuiBox-root.css-0 a::attr(href)").getall()
         
         setdirs = [root+setdir for setdir in setdirs if "set/" in setdir]
-        for setdir in [setdirs[2]]: # Newest sets likely don't have pull rates posted yet 
+        for setdir in [setdirs[-1]]: # Newest sets likely don't have pull rates posted yet 
             yield response.follow(setdir, callback=self.parse_details)
             
     def parse_details(self, response):
         details = {
             "logo": response.css("div.MuiBox-root.css-1kbd6lt img::attr(src)").get(),
             "name": response.css("div.MuiBox-root.css-0 h1::text").get(),
-            "Set Value": float(str(response.css("h5.MuiTypography-h5::text").get()).replace("$", "")),
             "Cards in Set": list(float(i) for i in 
                              "".join(response.css("div.MuiBox-root.css-i8nfdw span::text").getall()).split()
                              if i.isdigit())[0],
@@ -61,7 +106,7 @@ class PokeSpider(scrapy.Spider):
                                   list(i.strip() for i in 
                                        price.css("p.css-ggah30 b::text").getall()
                                        if i != ":"),
-                                  list(float(i.replace("$", "").strip()) for i in 
+                                  list(float(i.replace("$", "").replace(",", "").strip()) for i in 
                                        price.css("p.css-ggah30::text").getall()
                                        if "$" in i),
                             )
@@ -81,6 +126,17 @@ class PokeSpider(scrapy.Spider):
                 )
             },
             }
+        
+        if response.url or special_sets["shadowless"]+special_sets["unlimited"]:
+            
+            prices = response.css("div.MuiBox-root.css-fku9wg p::text").getall()
+            prices = prices[:int(len(prices)/2)]
+            details["Set Value"] = {edition.replace("(", "").replace(")", "").strip(): float(price.replace("$", "").replace(",", ""))
+                                    for edition, price in
+                                    zip(prices[1::2], prices[::2])}
+        else:
+            details["Set Value"] = float(str(response.css("h5.MuiTypography-h5::text").get()).replace("$", "").replace(",", "")),
+        
         yield response.follow(response.url+"/pull-rates", callback=self.parse_pullrates, cb_kwargs={"details": details}) # cb_kwargs is passed into callback as a keyword argument
         
     def parse_pullrates(self, response, details):
@@ -120,7 +176,7 @@ class PokeSpider(scrapy.Spider):
         pull_rates_values = pull_rates_values.astype(float)
         
         # (n)
-        expected_values = np.array([i.replace("$", "").replace("—", "0") for i in expected_value_table.css("p::text").getall()])
+        expected_values = np.array([i.replace("$", "").replace(",", "").replace("—", "0") for i in expected_value_table.css("p::text").getall()])
         
         total_priced = float(expected_values[-2])
         expected_value_per_pack = float(expected_values[-1])
@@ -163,7 +219,7 @@ class PokeSpider(scrapy.Spider):
                 
         details.update(dict(zip(
             response.css("div.MuiBox-root.css-1ijt0xn p::text").getall(),
-            list(float(i.replace("$", "")) for i in 
+            list(float(i.replace("$", "").replace(",", "")) for i in 
                 response.css("div.MuiBox-root.css-1ijt0xn h5::text").getall()),
             ),),
         )
