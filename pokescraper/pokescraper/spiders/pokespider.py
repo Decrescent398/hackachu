@@ -47,7 +47,7 @@ special_sets = {
 }
 
 for k, v in special_sets.items():
-    v = list(root+"/sets/"+i for i in v)
+    v = list(root+"/set/"+i for i in v)
     special_sets[k] = v
 
 class PokeSpider(scrapy.Spider):
@@ -128,7 +128,6 @@ class PokeSpider(scrapy.Spider):
             }
         
         if response.url or special_sets["shadowless"]+special_sets["unlimited"]:
-            
             prices = response.css("div.MuiBox-root.css-fku9wg p::text").getall()
             prices = prices[:int(len(prices)/2)]
             details["Set Value"] = {edition.replace("(", "").replace(")", "").strip(): float(price.replace("$", "").replace(",", ""))
@@ -137,92 +136,114 @@ class PokeSpider(scrapy.Spider):
         else:
             details["Set Value"] = float(str(response.css("h5.MuiTypography-h5::text").get()).replace("$", "").replace(",", "")),
         
-        yield response.follow(response.url+"/pull-rates", callback=self.parse_pullrates, cb_kwargs={"details": details}) # cb_kwargs is passed into callback as a keyword argument
+        yield response.follow(response.url+"/pull-rates", callback=self.parse_pullrates, cb_kwargs={"details": details, "original_url": response.url}) # cb_kwargs is passed into callback as a keyword argument
         
-    def parse_pullrates(self, response, details):
+    def parse_pullrates(self, response, details, original_url):
+        
+        details["Pull Rates Source"] = response.css("div.MuiBox-root.css-4sywta a::attr(href)").get()
         
         tables = response.css("div.MuiTableContainer-root")
-        pull_rates_table = tables[0]
-        expected_value_table = tables[1]
+        pull_rates_tables = tables[::2]
+        expected_value_tables = tables[1::2]
         
-        # (n)
-        pull_rates_values = np.array(pull_rates_table.css("p::text").getall())
+        def clean_pull_rate_types(s):
+            try:
+                return s[s.strip().index("(") + 1: -1]
+            except ValueError:
+                return "Default"
+        pull_rate_types = list(clean_pull_rate_types(i) 
+                               for i in 
+                               response.css("div.css-3bunz4 h2::text").getall())
         
-        cards_in_pack = float(pull_rates_values[-2].split()[0])
-        cards_in_booster = float(pull_rates_values[-1].split()[0])
+        pull_rate_summary_titles = list(tuple(response.css("div.css-eo1dsv p::text").getall()[i: i+4]) 
+                                        for i in range(0, len(response.css("div.css-eo1dsv p::text").getall()), len(pull_rate_types)))
+        pull_rate_summary_values = list(tuple(response.css("div.css-eo1dsv h5::text").getall()[i: i+4]) 
+                                        for i in range(0, len(response.css("div.css-eo1dsv h5::text").getall()), len(pull_rate_types)))
         
-        idx = np.where(pull_rates_values == "Total")[0][0]
-        pull_rates_values = pull_rates_values[:idx]
-        
-        # (n) -> (n/4, 4)
-        pull_rates_values = np.reshape(pull_rates_values, (int(len(pull_rates_values)/4), 4))
-        
-        def convert_pull_rates(val):
-            if "in" in val: # cols Pull Rate and Specific Card Odds
-                num = val.split()[2].replace(",", "")
-                return 1.0/ float(num)
-            elif "cards per pack" or "card per pack" in val: # col Pull Rate
-                return float(val.split()[0])
-            elif "cards" in val: # col Per Booster Box
-                return float(val.split(0))
-            return np.nan
-        
-        vfunc = np.vectorize(convert_pull_rates, otypes=[float])
-        rates = vfunc(pull_rates_values[:, [1, 2, 3]])
-        pull_rates_values[:, [1, 2, 3]] = rates
-        
-        # (n/4, 4) -> (n/4, 3)
-        pull_rates_values = np.delete(pull_rates_values, 0, axis=1)
-        pull_rates_values = pull_rates_values.astype(float)
-        
-        # (n)
-        expected_values = np.array([i.replace("$", "").replace(",", "").replace("—", "0") for i in expected_value_table.css("p::text").getall()])
-        
-        total_priced = float(expected_values[-2])
-        expected_value_per_pack = float(expected_values[-1])
-        
-        idx = np.where(expected_values == "Total")[0][0]
-        expected_values = expected_values[:idx]
-        
-        # (n) -> (n/5, 5)
-        expected_values = np.reshape(expected_values, (int(len(expected_values)/5), 5))
-        # (n/5, 5) -> (n/4, 4)
-        expected_values = np.delete(expected_values, 1, axis=1)
-        
-        # (n/4, 4) -> (n/4, 3)
-        expected_values = np.delete(expected_values, 0, axis=1)
-        expected_values = expected_values.astype(float)
-        
-        details["Cards in Pack"] = cards_in_pack
-        details["Cards in Booster"] = cards_in_booster
-        details["Total Priced"] = total_priced
-        details["Expected Value Per Pack"] = expected_value_per_pack
-        
-        pull_rates = np.concatenate((pull_rates_values, expected_values), axis=1)
-        
-        start = 0
-        for tier_key, tier_value in details["Card Rarities"].items():
-            stop = start + len(tier_value["Rarities"].keys())
-            pull_rates_clip = pull_rates[start: stop]
-            start = stop
+        for pull_rates_table, expected_value_table, pull_rate_type, \
+                pull_rate_summary_title, pull_rate_summary_value in zip(
+            pull_rates_tables, expected_value_tables, pull_rate_types, \
+                pull_rate_summary_titles, pull_rate_summary_values):
             
-            for rarity, rarity_pull_rate_details in zip(
-                tier_value["Rarities"].keys(), pull_rates_clip,
-            ):
-                details["Card Rarities"][tier_key]["Rarities"][rarity].update(dict(zip(
-                    (
-                        "Pull Rate", "Cards Per Booster Box", "Specific Card Odds",
-                        "Priced", "Average Value", "Expected Value Per Pack",
-                     ),
-                    rarity_pull_rate_details.tolist(),
-                )))
+            # <-- Pull Rates -->
+            # (n)
+            pull_rates_values = np.array(pull_rates_table.css("p::text").getall())
+            
+            cards_in_pack = float(pull_rates_values[-2].split()[0])
+            cards_in_booster = float(pull_rates_values[-1].split()[0])
+            
+            idx = np.where(pull_rates_values == "Total")[0][0]
+            pull_rates_values = pull_rates_values[:idx]
+            
+            # (n) -> (n/4, 4)
+            pull_rates_values = np.reshape(pull_rates_values, (int(len(pull_rates_values)/4), 4))
+            
+            def convert_pull_rates(val):
+                if "in" in val: # cols Pull Rate and Specific Card Odds
+                    num = val.split()[2].replace(",", "")
+                    return 1.0/ float(num)
+                elif "cards per pack" or "card per pack" in val: # col Pull Rate
+                    return float(val.split()[0])
+                elif "cards" in val: # col Per Booster Box
+                    return float(val.split(0))
+                return np.nan
+            
+            vfunc = np.vectorize(convert_pull_rates, otypes=[float])
+            rates = vfunc(pull_rates_values[:, [1, 2, 3]])
+            pull_rates_values[:, [1, 2, 3]] = rates
+            
+            # (n/4, 4) -> (n/4, 3)
+            pull_rates_values = np.delete(pull_rates_values, 0, axis=1)
+            pull_rates_values = pull_rates_values.astype(float)
+            
+            # <--- Expected Value --->
+            # (n)
+            expected_values = np.array(list(i.replace("$", "").replace(",", "").replace("—", "0") 
+                                            for i in expected_value_table.css("p::text").getall()))
+            
+            total_priced = float(expected_values[-2])
+            expected_value_per_pack = float(expected_values[-1])
+            
+            idx = np.where(expected_values == "Total")[0][0]
+            expected_values = expected_values[:idx]
+            
+            # (n) -> (n/5, 5)
+            expected_values = np.reshape(expected_values, (int(len(expected_values)/5), 5))
+            # (n/5, 5) -> (n/4, 4)
+            expected_values = np.delete(expected_values, 1, axis=1)
+            
+            # (n/4, 4) -> (n/4, 3)
+            expected_values = np.delete(expected_values, 0, axis=1)
+            expected_values = expected_values.astype(float)
+
+            # <--- Common --->
+            details.setdefault("Cards in Pack", {})[pull_rate_type] = cards_in_pack
+            details.setdefault("Cards in Booster", {})[pull_rate_type] = cards_in_booster
+            details.setdefault("Total Priced", {})[pull_rate_type] = total_priced
+            details.setdefault("Expected Value Per Pack", {})[pull_rate_type] = expected_value_per_pack
+            
+            pull_rates = np.concatenate((pull_rates_values, expected_values), axis=1)
+            
+            start = 0
+            for tier_key, tier_value in details["Card Rarities"].items():
+                stop = start + len(tier_value["Rarities"].keys())
+                pull_rates_clip = pull_rates[start: stop]
+                start = stop
                 
-        details.update(dict(zip(
-            response.css("div.MuiBox-root.css-1ijt0xn p::text").getall(),
-            list(float(i.replace("$", "").replace(",", "")) for i in 
-                response.css("div.MuiBox-root.css-1ijt0xn h5::text").getall()),
-            ),),
-        )
-        details["Pull Rates Source"] = response.css("div.MuiBox-root.css-4sywta a::attr(href)").get()
+                for rarity, rarity_pull_rate_details in zip(
+                    tier_value["Rarities"].keys(), pull_rates_clip,
+                ):
+                    details["Card Rarities"][tier_key]["Rarities"][rarity][pull_rate_type] = dict(zip(
+                        (
+                            "Pull Rate", "Cards Per Booster Box", "Specific Card Odds",
+                            "Priced", "Average Value", "Expected Value Per Pack",
+                        ),
+                        rarity_pull_rate_details.tolist(),
+                    ))
+                
+            for title, val in zip(
+                pull_rate_summary_title, pull_rate_summary_value):
+                clean_val = float(val.replace("$", "").replace(",", ""))
+                details.setdefault(title, {})[pull_rate_type] = clean_val
         
         print(details)
