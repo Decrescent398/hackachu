@@ -46,10 +46,6 @@ special_sets = {
         ],
 }
 
-for k, v in special_sets.items():
-    v = list(root+"/set/"+i for i in v)
-    special_sets[k] = v
-
 class PokeSpider(scrapy.Spider):
     
     name = "poke"
@@ -59,7 +55,7 @@ class PokeSpider(scrapy.Spider):
         setdirs = response.css("div.MuiBox-root.css-0 a::attr(href)").getall()
         
         setdirs = [root+setdir for setdir in setdirs if "set/" in setdir]
-        for setdir in [setdirs[-1]]: # Newest sets likely don't have pull rates posted yet 
+        for setdir in [setdirs[1]]: # Newest sets likely don't have pull rates posted yet 
             yield response.follow(setdir, callback=self.parse_details)
             
     def parse_details(self, response):
@@ -127,18 +123,22 @@ class PokeSpider(scrapy.Spider):
             },
             }
         
-        if response.url or special_sets["shadowless"]+special_sets["unlimited"]:
+        if response.url.split("/")[-1] in special_sets["shadowless"]+special_sets["unlimited"]:
             prices = response.css("div.MuiBox-root.css-fku9wg p::text").getall()
             prices = prices[:int(len(prices)/2)]
             details["Set Value"] = {edition.replace("(", "").replace(")", "").strip(): float(price.replace("$", "").replace(",", ""))
                                     for edition, price in
                                     zip(prices[1::2], prices[::2])}
         else:
-            details["Set Value"] = float(str(response.css("h5.MuiTypography-h5::text").get()).replace("$", "").replace(",", "")),
+            details["Set Value"] = float(str(response.css("h5.MuiTypography-h5::text").get()).replace("$", "").replace(",", ""))
         
-        yield response.follow(response.url+"/pull-rates", callback=self.parse_pullrates, cb_kwargs={"details": details, "original_url": response.url}) # cb_kwargs is passed into callback as a keyword argument
+        nobooster = False
+        if response.url.split("/")[-1] in special_sets["nobooster"]:
+            nobooster = True
         
-    def parse_pullrates(self, response, details, original_url):
+        yield response.follow(response.url+"/pull-rates", callback=self.parse_pullrates, cb_kwargs={"details": details, "nobooster": nobooster}) # cb_kwargs is passed into callback as a keyword argument
+        
+    def parse_pullrates(self, response, details, nobooster):
         
         details["Pull Rates Source"] = response.css("div.MuiBox-root.css-4sywta a::attr(href)").get()
         
@@ -169,14 +169,23 @@ class PokeSpider(scrapy.Spider):
             # (n)
             pull_rates_values = np.array(pull_rates_table.css("p::text").getall())
             
-            cards_in_pack = float(pull_rates_values[-2].split()[0])
-            cards_in_booster = float(pull_rates_values[-1].split()[0])
+            if nobooster:
+                cards_in_pack = float(pull_rates_values[-1].split()[0])
+                cards_in_booster = 0.0
+            else:
+                cards_in_pack = float(pull_rates_values[-2].split()[0])
+                cards_in_booster = float(pull_rates_values[-1].split()[0])
             
             idx = np.where(pull_rates_values == "Total")[0][0]
             pull_rates_values = pull_rates_values[:idx]
             
-            # (n) -> (n/4, 4)
-            pull_rates_values = np.reshape(pull_rates_values, (int(len(pull_rates_values)/4), 4))
+            if nobooster:
+                cols = 3
+            else:
+                cols = 4
+            
+            # (n) -> (n/cols, cols)
+            pull_rates_values = np.reshape(pull_rates_values, (int(len(pull_rates_values)/cols), cols))
             
             def convert_pull_rates(val):
                 if "in" in val: # cols Pull Rate and Specific Card Odds
@@ -189,11 +198,11 @@ class PokeSpider(scrapy.Spider):
                 return np.nan
             
             vfunc = np.vectorize(convert_pull_rates, otypes=[float])
-            rates = vfunc(pull_rates_values[:, [1, 2, 3]])
-            pull_rates_values[:, [1, 2, 3]] = rates
+            rates = vfunc(pull_rates_values[:, list(i for i in range(1, cols))])
+            pull_rates_values[:, list(i for i in range(1, cols))] = rates
             
-            # (n/4, 4) -> (n/4, 3)
-            pull_rates_values = np.delete(pull_rates_values, 0, axis=1)
+            # (n/cols, cols) -> (n/cols, cols-1)
+            pull_rates_values = np.delete(pull_rates_values, 0, axis=1) # delete str col
             pull_rates_values = pull_rates_values.astype(float)
             
             # <--- Expected Value --->
@@ -243,7 +252,7 @@ class PokeSpider(scrapy.Spider):
                 
             for title, val in zip(
                 pull_rate_summary_title, pull_rate_summary_value):
-                clean_val = float(val.replace("$", "").replace(",", ""))
+                clean_val = float(val.replace("$", "").replace(",", "").replace("—", "0"))
                 details.setdefault(title, {})[pull_rate_type] = clean_val
         
         print(details)

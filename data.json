@@ -1,0 +1,1412 @@
+{
+    "logo": "https://images.scrydex.com/pokemon/me55-logo/logo",
+    "name": "30th Celebration",
+    "Cards in Set": 191.0,
+    "Variants in Set": 191.0,
+    "Release Date": "2026/09/16",
+    "No. of Cards": "191",
+    "Set Code": "30C",
+    "Set Group": "Mega Evolution",
+    "Card Rarities": {
+        "Ultra Rare Cards": {
+            "Count": 105.0,
+            "Rarities": {
+                "RGB Secret Rare": {
+                    "Count": 3.0,
+                    "Default": {
+                        "Pull Rate": 0.0002461235540241201,
+                        "Cards Per Booster Box": 8.20411846747067e-05,
+                        "Specific Card Odds": 3.0,
+                        "Priced": 3950.01,
+                        "Average Value": 0.97
+                    }
+                },
+                "Futuristic Rare": {
+                    "Count": 2.0,
+                    "Default": {
+                        "Pull Rate": 0.010101010101010102,
+                        "Cards Per Booster Box": 0.005050505050505051,
+                        "Specific Card Odds": 2.0,
+                        "Priced": 28.06,
+                        "Average Value": 0.28
+                    }
+                },
+                "Special Illustration Rare": {
+                    "Count": 10.0,
+                    "Default": {
+                        "Pull Rate": 0.05263157894736842,
+                        "Cards Per Booster Box": 0.005263157894736842,
+                        "Specific Card Odds": 10.0,
+                        "Priced": 30.87,
+                        "Average Value": 1.62
+                    }
+                },
+                "Classic Collection": {
+                    "Count": 30.0,
+                    "Default": {
+                        "Pull Rate": 0.10416666666666667,
+                        "Cards Per Booster Box": 0.003472222222222222,
+                        "Specific Card Odds": 30.0,
+                        "Priced": 19.16,
+                        "Average Value": 2.0
+                    }
+                },
+                "Illustration Rare": {
+                    "Count": 18.0,
+                    "Default": {
+                        "Pull Rate": 0.1923076923076923,
+                        "Cards Per Booster Box": 0.010683760683760684,
+                        "Specific Card Odds": 18.0,
+                        "Priced": 2.58,
+                        "Average Value": 0.5
+                    }
+                },
+                "Double Rare": {
+                    "Count": 12.0,
+                    "Default": {
+                        "Pull Rate": 0.25,
+                        "Cards Per Booster Box": 0.020833333333333332,
+                        "Specific Card Odds": 12.0,
+                        "Priced": 0.76,
+                        "Average Value": 0.19
+                    }
+                },
+                "Pikachu Rare": {
+                    "Count": 30.0,
+                    "Default": {
+                        "Pull Rate": 1.0,
+                        "Cards Per Booster Box": 0.03333333333333333,
+                        "Specific Card Odds": 30.0,
+                        "Priced": 0.72,
+                        "Average Value": 0.72
+                    }
+                }
+            }
+        },
+        "Standard Cards": {
+            "Count": 86.0,
+            "Rarities": {
+                "Rare": {
+                    "Count": 18.0,
+                    "Default": {
+                        "Pull Rate": 0.6666666666666666,
+                        "Cards Per Booster Box": 0.03816793893129771,
+                        "Specific Card Odds": 18.0,
+                        "Priced": 0.2,
+                        "Average Value": 0.14
+                    }
+                },
+                "Common": {
+                    "Count": 68.0,
+                    "Default": {
+                        "Pull Rate": 2.7,
+                        "Cards Per Booster Box": 0.03968253968253968,
+                        "Specific Card Odds": 68.0,
+                        "Priced": 0.2,
+                        "Average Value": 0.54
+                    }
+                }
+            }
+        }
+    },
+    "Cards": {
+        "1": {
+            "Name": "Exeggcute",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-1/large",
+            "price": {
+                "Holo": 0.17
+            }
+        },
+        "2": {
+            "Name": "Alolan Exeggutor",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-2/large",
+            "price": {
+                "Holo": 0.22
+            }
+        },
+        "3": {
+            "Name": "Volbeat",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-3/large",
+            "price": {
+                "Holo": 0.15
+            }
+        },
+        "4": {
+            "Name": "Mew",
+            "Rarity": "RGB Secret Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-4/large",
+            "price": {
+                "Holo": 3456.93
+            }
+        },
+        "5": {
+            "Name": "Sneasel",
+            "Rarity": "Classic Collection",
+            "image": "https://images.scrydex.com/pokemon/me55-5/large",
+            "price": {
+                "Holo": 2.95
+            }
+        },
+        "6": {
+            "Name": "Cherubi",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-6/large",
+            "price": {
+                "Holo": 0.14
+            }
+        },
+        "7": {
+            "Name": "Cherrim",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-7/large",
+            "price": {
+                "Holo": 0.19
+            }
+        },
+        "8": {
+            "Name": "Vivillon",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-8/large",
+            "price": {
+                "Holo": 0.18
+            }
+        },
+        "9": {
+            "Name": "Vulpix",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-9/large",
+            "price": {
+                "Holo": 0.2
+            }
+        },
+        "10": {
+            "Name": "Ninetales",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-10/large",
+            "price": {
+                "Holo": 0.24
+            }
+        },
+        "11": {
+            "Name": "Darkrai & Cresselia LEGEND",
+            "Rarity": "Classic Collection",
+            "image": "https://images.scrydex.com/pokemon/me55-11/large",
+            "price": {
+                "Holo": 15.19
+            }
+        },
+        "12": {
+            "Name": "Ho-Oh",
+            "Rarity": "Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-12/large",
+            "price": {
+                "Holo": 0.22
+            }
+        },
+        "13": {
+            "Name": "Victini",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-13/large",
+            "price": {
+                "Holo": 0.79
+            }
+        },
+        "14": {
+            "Name": "Reshiram",
+            "Rarity": "Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-14/large",
+            "price": {
+                "Holo": 0.19
+            }
+        },
+        "15": {
+            "Name": "Fuecoco ex",
+            "Rarity": "Double Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-15/large",
+            "price": {
+                "Holo": 0.35
+            }
+        },
+        "16": {
+            "Name": "Slowpoke",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-16/large",
+            "price": {
+                "Holo": 0.23
+            }
+        },
+        "17": {
+            "Name": "Lapras",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-17/large",
+            "price": {
+                "Holo": 0.22
+            }
+        },
+        "18": {
+            "Name": "Mew",
+            "Rarity": "RGB Secret Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-18/large",
+            "price": {
+                "Holo": 4263.6
+            }
+        },
+        "19": {
+            "Name": "Shining Celebi",
+            "Rarity": "Classic Collection",
+            "image": "https://images.scrydex.com/pokemon/me55-19/large",
+            "price": {
+                "Holo": 15.75
+            }
+        },
+        "20": {
+            "Name": "Palkia",
+            "Rarity": "Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-20/large",
+            "price": {
+                "Holo": 0.17
+            }
+        },
+        "21": {
+            "Name": "Greninja ex",
+            "Rarity": "Double Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-21/large",
+            "price": {
+                "Holo": 0.47
+            }
+        },
+        "22": {
+            "Name": "Wishiwashi",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-22/large",
+            "price": {
+                "Holo": 0.21
+            }
+        },
+        "23": {
+            "Name": "Pikachu",
+            "Rarity": "Pikachu Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-23/large",
+            "price": {
+                "Holo": 0.49
+            }
+        },
+        "24": {
+            "Name": "Pikachu",
+            "Rarity": "Pikachu Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-24/large",
+            "price": {
+                "Holo": 0.48
+            }
+        },
+        "25": {
+            "Name": "Charizard",
+            "Rarity": "Classic Collection",
+            "image": "https://images.scrydex.com/pokemon/me55-25/large",
+            "price": {
+                "Holo": 117.99
+            }
+        },
+        "26": {
+            "Name": "Pikachu",
+            "Rarity": "Pikachu Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-26/large",
+            "price": {
+                "Holo": 1.04
+            }
+        },
+        "27": {
+            "Name": "Pikachu",
+            "Rarity": "Pikachu Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-27/large",
+            "price": {
+                "Holo": 1.01
+            }
+        },
+        "28": {
+            "Name": "Pikachu",
+            "Rarity": "Pikachu Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-28/large",
+            "price": {
+                "Holo": 0.95
+            }
+        },
+        "29": {
+            "Name": "Pikachu",
+            "Rarity": "Pikachu Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-29/large",
+            "price": {
+                "Holo": 0.45
+            }
+        },
+        "30": {
+            "Name": "Pikachu",
+            "Rarity": "Pikachu Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-30/large",
+            "price": {
+                "Holo": 0.53
+            }
+        },
+        "31": {
+            "Name": "Pikachu",
+            "Rarity": "Pikachu Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-31/large",
+            "price": {
+                "Holo": 0.46
+            }
+        },
+        "32": {
+            "Name": "Pikachu",
+            "Rarity": "Pikachu Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-32/large",
+            "price": {
+                "Holo": 0.73
+            }
+        },
+        "33": {
+            "Name": "Greninja BREAK",
+            "Rarity": "Classic Collection",
+            "image": "https://images.scrydex.com/pokemon/me55-33/large",
+            "price": {
+                "Holo": 8.17
+            }
+        },
+        "34": {
+            "Name": "Pikachu",
+            "Rarity": "Pikachu Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-34/large",
+            "price": {
+                "Holo": 0.76
+            }
+        },
+        "35": {
+            "Name": "Pikachu",
+            "Rarity": "Pikachu Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-35/large",
+            "price": {
+                "Holo": 0.57
+            }
+        },
+        "36": {
+            "Name": "Pikachu",
+            "Rarity": "Pikachu Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-36/large",
+            "price": {
+                "Holo": 0.82
+            }
+        },
+        "37": {
+            "Name": "Pikachu",
+            "Rarity": "Pikachu Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-37/large",
+            "price": {
+                "Holo": 0.46
+            }
+        },
+        "38": {
+            "Name": "Pikachu",
+            "Rarity": "Pikachu Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-38/large",
+            "price": {
+                "Holo": 0.89
+            }
+        },
+        "39": {
+            "Name": "Pikachu",
+            "Rarity": "Pikachu Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-39/large",
+            "price": {
+                "Holo": 1.13
+            }
+        },
+        "40": {
+            "Name": "Pikachu",
+            "Rarity": "Pikachu Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-40/large",
+            "price": {
+                "Holo": 2.31
+            }
+        },
+        "41": {
+            "Name": "Rayquaza EX",
+            "Rarity": "Classic Collection",
+            "image": "https://images.scrydex.com/pokemon/me55-41/large",
+            "price": {
+                "Holo": 17.64
+            }
+        },
+        "42": {
+            "Name": "Pikachu",
+            "Rarity": "Pikachu Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-42/large",
+            "price": {
+                "Holo": 0.55
+            }
+        },
+        "43": {
+            "Name": "Scizor ex",
+            "Rarity": "Classic Collection",
+            "image": "https://images.scrydex.com/pokemon/me55-43/large",
+            "price": {
+                "Holo": 8.3
+            }
+        },
+        "44": {
+            "Name": "Pikachu",
+            "Rarity": "Pikachu Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-44/large",
+            "price": {
+                "Holo": 0.52
+            }
+        },
+        "45": {
+            "Name": "Pikachu",
+            "Rarity": "Pikachu Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-45/large",
+            "price": {
+                "Holo": 0.44
+            }
+        },
+        "46": {
+            "Name": "Pikachu",
+            "Rarity": "Pikachu Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-46/large",
+            "price": {
+                "Holo": 0.5
+            }
+        },
+        "47": {
+            "Name": "Metagross",
+            "Rarity": "Classic Collection",
+            "image": "https://images.scrydex.com/pokemon/me55-47/large",
+            "price": {
+                "Holo": 3.96
+            }
+        },
+        "48": {
+            "Name": "Pikachu",
+            "Rarity": "Pikachu Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-48/large",
+            "price": {
+                "Holo": 0.53
+            }
+        },
+        "49": {
+            "Name": "Pikachu",
+            "Rarity": "Pikachu Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-49/large",
+            "price": {
+                "Holo": 0.43
+            }
+        },
+        "50": {
+            "Name": "Buzzwole GX",
+            "Rarity": "Classic Collection",
+            "image": "https://images.scrydex.com/pokemon/me55-50/large",
+            "price": {
+                "Holo": 2.34
+            }
+        },
+        "51": {
+            "Name": "Pikachu",
+            "Rarity": "Pikachu Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-51/large",
+            "price": {
+                "Holo": 0.44
+            }
+        },
+        "52": {
+            "Name": "Pikachu",
+            "Rarity": "Pikachu Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-52/large",
+            "price": {
+                "Holo": 1.02
+            }
+        },
+        "53": {
+            "Name": "Pikachu ex",
+            "Rarity": "Double Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-53/large",
+            "price": {
+                "Holo": 0.79
+            }
+        },
+        "54": {
+            "Name": "Pikachu ex",
+            "Rarity": "Double Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-54/large",
+            "price": {
+                "Holo": 1.7
+            }
+        },
+        "55": {
+            "Name": "Zapdos",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-55/large",
+            "price": {
+                "Holo": 0.22
+            }
+        },
+        "56": {
+            "Name": "Zekrom",
+            "Rarity": "Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-56/large",
+            "price": {
+                "Holo": 0.19
+            }
+        },
+        "57": {
+            "Name": "M Gardevoir EX",
+            "Rarity": "Classic Collection",
+            "image": "https://images.scrydex.com/pokemon/me55-57/large",
+            "price": {
+                "Holo": 9.58
+            }
+        },
+        "58": {
+            "Name": "Mew",
+            "Rarity": "RGB Secret Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-58/large",
+            "price": {
+                "Holo": 4129.49
+            }
+        },
+        "59": {
+            "Name": "Toxtricity",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-59/large",
+            "price": {
+                "Holo": 0.18
+            }
+        },
+        "60": {
+            "Name": "Toxtricity",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-60/large",
+            "price": {
+                "Holo": 0.16
+            }
+        },
+        "61": {
+            "Name": "Morpeko",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-61/large",
+            "price": {
+                "Holo": 0.19
+            }
+        },
+        "62": {
+            "Name": "Miraidon",
+            "Rarity": "Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-62/large",
+            "price": {
+                "Holo": 0.2
+            }
+        },
+        "63": {
+            "Name": "Mewtwo",
+            "Rarity": "Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-63/large",
+            "price": {
+                "Holo": 0.28
+            }
+        },
+        "64": {
+            "Name": "Mewtwo ex",
+            "Rarity": "Double Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-64/large",
+            "price": {
+                "Holo": 0.65
+            }
+        },
+        "65": {
+            "Name": "Mew",
+            "Rarity": "Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-65/large",
+            "price": {
+                "Holo": 0.35
+            }
+        },
+        "66": {
+            "Name": "Mew ex",
+            "Rarity": "Double Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-66/large",
+            "price": {
+                "Holo": 1.34
+            }
+        },
+        "67": {
+            "Name": "Marill",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-67/large",
+            "price": {
+                "Holo": 0.17
+            }
+        },
+        "68": {
+            "Name": "Azumarill",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-68/large",
+            "price": {
+                "Holo": 0.19
+            }
+        },
+        "69": {
+            "Name": "Pikachu",
+            "Rarity": "Classic Collection",
+            "image": "https://images.scrydex.com/pokemon/me55-69/large",
+            "price": {
+                "Holo": 12.25
+            }
+        },
+        "70": {
+            "Name": "Espeon ex",
+            "Rarity": "Double Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-70/large",
+            "price": {
+                "Holo": 0.54
+            }
+        },
+        "71": {
+            "Name": "Sylveon ex",
+            "Rarity": "Double Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-71/large",
+            "price": {
+                "Holo": 0.68
+            }
+        },
+        "72": {
+            "Name": "Unown",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-72/large",
+            "price": {
+                "Holo": 0.26
+            }
+        },
+        "73": {
+            "Name": "Drifloon",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-73/large",
+            "price": {
+                "Holo": 0.21
+            }
+        },
+        "74": {
+            "Name": "Cresselia",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-74/large",
+            "price": {
+                "Holo": 0.19
+            }
+        },
+        "75": {
+            "Name": "Chandelure",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-75/large",
+            "price": {
+                "Holo": 0.14
+            }
+        },
+        "76": {
+            "Name": "Xerneas",
+            "Rarity": "Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-76/large",
+            "price": {
+                "Holo": 0.23
+            }
+        },
+        "77": {
+            "Name": "Comfey",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-77/large",
+            "price": {
+                "Holo": 0.21
+            }
+        },
+        "78": {
+            "Name": "Cosmog",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-78/large",
+            "price": {
+                "Holo": 0.15
+            }
+        },
+        "79": {
+            "Name": "Cosmoem",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-79/large",
+            "price": {
+                "Holo": 0.22
+            }
+        },
+        "80": {
+            "Name": "Lunala",
+            "Rarity": "Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-80/large",
+            "price": {
+                "Holo": 0.18
+            }
+        },
+        "81": {
+            "Name": "Gimmighoul",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-81/large",
+            "price": {
+                "Holo": 0.2
+            }
+        },
+        "82": {
+            "Name": "Groudon",
+            "Rarity": "Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-82/large",
+            "price": {
+                "Holo": 0.17
+            }
+        },
+        "83": {
+            "Name": "Lucario",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-83/large",
+            "price": {
+                "Holo": 0.2
+            }
+        },
+        "84": {
+            "Name": "Seismitoad",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-84/large",
+            "price": {
+                "Holo": 0.16
+            }
+        },
+        "85": {
+            "Name": "Darkrai & Cresselia LEGEND",
+            "Rarity": "Classic Collection",
+            "image": "https://images.scrydex.com/pokemon/me55-85/large",
+            "price": {
+                "Holo": 15.72
+            }
+        },
+        "86": {
+            "Name": "Koraidon",
+            "Rarity": "Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-86/large",
+            "price": {
+                "Holo": 0.15
+            }
+        },
+        "87": {
+            "Name": "Nidoran ♀",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-87/large",
+            "price": {
+                "Holo": 0.12
+            }
+        },
+        "88": {
+            "Name": "Nidorina",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-88/large",
+            "price": {
+                "Holo": 0.16
+            }
+        },
+        "89": {
+            "Name": "Genesect EX",
+            "Rarity": "Classic Collection",
+            "image": "https://images.scrydex.com/pokemon/me55-89/large",
+            "price": {
+                "Holo": 4.87
+            }
+        },
+        "90": {
+            "Name": "Gengar ex",
+            "Rarity": "Double Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-90/large",
+            "price": {
+                "Holo": 1.04
+            }
+        },
+        "91": {
+            "Name": "Umbreon",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-91/large",
+            "price": {
+                "Holo": 0.27
+            }
+        },
+        "92": {
+            "Name": "Umbreon ex",
+            "Rarity": "Double Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-92/large",
+            "price": {
+                "Holo": 0.76
+            }
+        },
+        "93": {
+            "Name": "Murkrow",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-93/large",
+            "price": {
+                "Holo": 0.16
+            }
+        },
+        "94": {
+            "Name": "Palkia LV.X",
+            "Rarity": "Classic Collection",
+            "image": "https://images.scrydex.com/pokemon/me55-94/large",
+            "price": {
+                "Holo": 7.6
+            }
+        },
+        "95": {
+            "Name": "Zorua",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-95/large",
+            "price": {
+                "Holo": 0.15
+            }
+        },
+        "96": {
+            "Name": "Zoroark",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-96/large",
+            "price": {
+                "Holo": 0.21
+            }
+        },
+        "97": {
+            "Name": "Deino",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-97/large",
+            "price": {
+                "Holo": 0.15
+            }
+        },
+        "98": {
+            "Name": "Zweilous",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-98/large",
+            "price": {
+                "Holo": 0.16
+            }
+        },
+        "99": {
+            "Name": "Uxie",
+            "Rarity": "Classic Collection",
+            "image": "https://images.scrydex.com/pokemon/me55-99/large",
+            "price": {
+                "Holo": 2.88
+            }
+        },
+        "100": {
+            "Name": "Crobat G",
+            "Rarity": "Classic Collection",
+            "image": "https://images.scrydex.com/pokemon/me55-100/large",
+            "price": {
+                "Holo": 3.39
+            }
+        },
+        "101": {
+            "Name": "Gengar",
+            "Rarity": "Classic Collection",
+            "image": "https://images.scrydex.com/pokemon/me55-101/large",
+            "price": {
+                "Holo": 40.44
+            }
+        },
+        "102": {
+            "Name": "Jirachi ex",
+            "Rarity": "Double Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-102/large",
+            "price": {
+                "Holo": 0.4
+            }
+        },
+        "103": {
+            "Name": "Dialga",
+            "Rarity": "Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-103/large",
+            "price": {
+                "Holo": 0.18
+            }
+        },
+        "104": {
+            "Name": "Ferrothorn",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-104/large",
+            "price": {
+                "Holo": 0.12
+            }
+        },
+        "105": {
+            "Name": "Solgaleo",
+            "Rarity": "Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-105/large",
+            "price": {
+                "Holo": 0.18
+            }
+        },
+        "106": {
+            "Name": "N",
+            "Rarity": "Classic Collection",
+            "image": "https://images.scrydex.com/pokemon/me55-106/large",
+            "price": {
+                "Holo": 10.87
+            }
+        },
+        "107": {
+            "Name": "Zamazenta",
+            "Rarity": "Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-107/large",
+            "price": {
+                "Holo": 0.19
+            }
+        },
+        "108": {
+            "Name": "Lugia",
+            "Rarity": "Classic Collection",
+            "image": "https://images.scrydex.com/pokemon/me55-108/large",
+            "price": {
+                "Holo": 124.59
+            }
+        },
+        "109": {
+            "Name": "Salamence ex",
+            "Rarity": "Double Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-109/large",
+            "price": {
+                "Holo": 0.43
+            }
+        },
+        "110": {
+            "Name": "Jangmo-o",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-110/large",
+            "price": {
+                "Holo": 0.15
+            }
+        },
+        "111": {
+            "Name": "Hakamo-o",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-111/large",
+            "price": {
+                "Holo": 0.12
+            }
+        },
+        "112": {
+            "Name": "Kommo-o",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-112/large",
+            "price": {
+                "Holo": 0.2
+            }
+        },
+        "113": {
+            "Name": "Meowth",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-113/large",
+            "price": {
+                "Holo": 0.22
+            }
+        },
+        "114": {
+            "Name": "Pikachu & Zekrom GX",
+            "Rarity": "Classic Collection",
+            "image": "https://images.scrydex.com/pokemon/me55-114/large",
+            "price": {
+                "Holo": 21.1
+            }
+        },
+        "115": {
+            "Name": "Ditto",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-115/large",
+            "price": {
+                "Holo": 0.23
+            }
+        },
+        "116": {
+            "Name": "Eevee",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-116/large",
+            "price": {
+                "Holo": 0.26
+            }
+        },
+        "117": {
+            "Name": "Eevee",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-117/large",
+            "price": {
+                "Holo": 0.24
+            }
+        },
+        "118": {
+            "Name": "Eevee",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-118/large",
+            "price": {
+                "Holo": 0.23
+            }
+        },
+        "119": {
+            "Name": "Snorlax",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-119/large",
+            "price": {
+                "Holo": 0.26
+            }
+        },
+        "120": {
+            "Name": "Igglybuff",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-120/large",
+            "price": {
+                "Holo": 0.22
+            }
+        },
+        "121": {
+            "Name": "Lugia",
+            "Rarity": "Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-121/large",
+            "price": {
+                "Holo": 0.24
+            }
+        },
+        "122": {
+            "Name": "Hisuian Zorua",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-122/large",
+            "price": {
+                "Holo": 0.16
+            }
+        },
+        "123": {
+            "Name": "Zacian V",
+            "Rarity": "Classic Collection",
+            "image": "https://images.scrydex.com/pokemon/me55-123/large",
+            "price": {
+                "Holo": 4.66
+            }
+        },
+        "124": {
+            "Name": "Minior",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-124/large",
+            "price": {
+                "Holo": 0.16
+            }
+        },
+        "125": {
+            "Name": "Maushold",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-125/large",
+            "price": {
+                "Holo": 0.17
+            }
+        },
+        "126": {
+            "Name": "Poké Pad",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-126/large",
+            "price": {
+                "Holo": 0.27
+            }
+        },
+        "127": {
+            "Name": "Switch",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-127/large",
+            "price": {
+                "Holo": 0.2
+            }
+        },
+        "128": {
+            "Name": "Ultra Ball",
+            "Rarity": "Common",
+            "image": "https://images.scrydex.com/pokemon/me55-128/large",
+            "price": {
+                "Holo": 0.25
+            }
+        },
+        "129": {
+            "Name": "Alolan Exeggutor",
+            "Rarity": "Illustration Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-129/large",
+            "price": {
+                "Holo": 1.24
+            }
+        },
+        "130": {
+            "Name": "Moltres",
+            "Rarity": "Illustration Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-130/large",
+            "price": {
+                "Holo": 3.21
+            }
+        },
+        "131": {
+            "Name": "Lapras",
+            "Rarity": "Illustration Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-131/large",
+            "price": {
+                "Holo": 3.48
+            }
+        },
+        "132": {
+            "Name": "Articuno",
+            "Rarity": "Illustration Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-132/large",
+            "price": {
+                "Holo": 2.93
+            }
+        },
+        "133": {
+            "Name": "Zapdos",
+            "Rarity": "Illustration Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-133/large",
+            "price": {
+                "Holo": 3.19
+            }
+        },
+        "134": {
+            "Name": "Toxtricity",
+            "Rarity": "Illustration Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-134/large",
+            "price": {
+                "Holo": 1.44
+            }
+        },
+        "135": {
+            "Name": "Morpeko",
+            "Rarity": "Illustration Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-135/large",
+            "price": {
+                "Holo": 2.82
+            }
+        },
+        "136": {
+            "Name": "Drifloon",
+            "Rarity": "Illustration Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-136/large",
+            "price": {
+                "Holo": 2.26
+            }
+        },
+        "137": {
+            "Name": "Chandelure",
+            "Rarity": "Illustration Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-137/large",
+            "price": {
+                "Holo": 1.13
+            }
+        },
+        "138": {
+            "Name": "Solgaleo GX",
+            "Rarity": "Classic Collection",
+            "image": "https://images.scrydex.com/pokemon/me55-138/large",
+            "price": {
+                "Holo": 5.16
+            }
+        },
+        "139": {
+            "Name": "Alolan Meowth",
+            "Rarity": "Illustration Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-139/large",
+            "price": {
+                "Holo": 3.57
+            }
+        },
+        "140": {
+            "Name": "Scraggy",
+            "Rarity": "Illustration Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-140/large",
+            "price": {
+                "Holo": 1.0
+            }
+        },
+        "141": {
+            "Name": "Galarian Meowth",
+            "Rarity": "Illustration Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-141/large",
+            "price": {
+                "Holo": 3.64
+            }
+        },
+        "142": {
+            "Name": "Gholdengo",
+            "Rarity": "Illustration Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-142/large",
+            "price": {
+                "Holo": 0.9
+            }
+        },
+        "143": {
+            "Name": "Kommo-o",
+            "Rarity": "Illustration Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-143/large",
+            "price": {
+                "Holo": 0.93
+            }
+        },
+        "144": {
+            "Name": "Meowth",
+            "Rarity": "Illustration Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-144/large",
+            "price": {
+                "Holo": 5.12
+            }
+        },
+        "145": {
+            "Name": "Hisuian Zorua",
+            "Rarity": "Illustration Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-145/large",
+            "price": {
+                "Holo": 2.58
+            }
+        },
+        "146": {
+            "Name": "Maushold",
+            "Rarity": "Illustration Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-146/large",
+            "price": {
+                "Holo": 5.93
+            }
+        },
+        "147": {
+            "Name": "Fuecoco ex",
+            "Rarity": "Special Illustration Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-147/large",
+            "price": {
+                "Holo": 10.04
+            }
+        },
+        "148": {
+            "Name": "Greninja ex",
+            "Rarity": "Special Illustration Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-148/large",
+            "price": {
+                "Holo": 14.3
+            }
+        },
+        "149": {
+            "Name": "Erika's Jigglypuff",
+            "Rarity": "Classic Collection",
+            "image": "https: //images.scrydex.com/pokemon/me55-149/large",
+            "price": {
+                "Holo": 6.31
+            }
+        },
+        "150": {
+            "Name": "Pikachu ex",
+            "Rarity": "Special Illustration Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-150/large",
+            "price": {
+                "Holo": 38.18
+            }
+        },
+        "151": {
+            "Name": "Mewtwo ex",
+            "Rarity": "Special Illustration Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-151/large",
+            "price": {
+                "Holo": 33.4
+            }
+        },
+        "152": {
+            "Name": "Mew ex",
+            "Rarity": "Special Illustration Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-152/large",
+            "price": {
+                "Holo": 60.12
+            }
+        },
+        "153": {
+            "Name": "Sylveon ex",
+            "Rarity": "Special Illustration Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-153/large",
+            "price": {
+                "Holo": 32.62
+            }
+        },
+        "154": {
+            "Name": "Gengar ex",
+            "Rarity": "Special Illustration Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-154/large",
+            "price": {
+                "Holo": 48.32
+            }
+        },
+        "155": {
+            "Name": "Jirachi ex",
+            "Rarity": "Special Illustration Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-155/large",
+            "price": {
+                "Holo": 27.77
+            }
+        },
+        "156": {
+            "Name": "Salamence ex",
+            "Rarity": "Special Illustration Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-156/large",
+            "price": {
+                "Holo": 10.15
+            }
+        },
+        "157": {
+            "Name": "Mewtwo ex",
+            "Rarity": "Futuristic Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-157/large",
+            "price": {
+                "Holo": 26.66
+            }
+        },
+        "158": {
+            "Name": "Mew ex",
+            "Rarity": "Futuristic Rare",
+            "image": "https://images.scrydex.com/pokemon/me55-158/large",
+            "price": {
+                "Holo": 29.46
+            }
+        },
+        "203": {
+            "Name": "Raikou",
+            "Rarity": "Classic Collection",
+            "image": "https://images.scrydex.com/pokemon/me55-203/large",
+            "price": {
+                "Holo": 7.2
+            }
+        }
+    },
+    "Set Value": 12883.91,
+    "Pull Rates Source": "https://www.reddit.com/r/PokemonTCG/comments/1whk28a/i_recorded_30th_pull_rate_on_over_4000_pack/",
+    "Cards in Pack": {
+        "Default": 6.0
+    },
+    "Cards in Booster": {
+        "Default": 0.0
+    },
+    "Total Priced": {
+        "Default": 191.0
+    },
+    "Expected Value Per Pack": {
+        "Default": 6.96
+    },
+    "Booster Pack EV": {
+        "Default": 6.96
+    },
+    "Booster Box EV": {
+        "Default": 0.0
+    },
+    "Packs Per Booster Box": {
+        "Default": 0.0
+    },
+    "Cards Per Booster Pack": {
+        "Default": 6.0
+    }
+}
